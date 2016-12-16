@@ -19,6 +19,7 @@ void loop() {
     buff[counter] = 1;
     counter++;
     x = x << 1 | 1;
+    Serial.print("Updated: ");
     for(int i = 0; i < counter; i++){
       Serial.print(buff[i]);
     }
@@ -28,24 +29,28 @@ void loop() {
     buff[counter] = 0;
     counter++;
     x = x << 1;
+    Serial.print("Updated: ");
     for(int i = 0; i < counter; i++){
       Serial.print(buff[i]);
     }
     Serial.println();
   }
   else if(digitalRead(8) == LOW){
-    if(counter != 0)
+    if(counter != 0){
       counter--;
     x = (unsigned)x >> 1;
+    Serial.print("Updated: ");
     for(int i = 0; i < counter; i++){
       Serial.print(buff[i]);
     }
     Serial.println();
+    }
   }
   else if(digitalRead(11) == LOW){
+    Serial.print("Decoded: ");
     Serial.write(x);
     Serial.println();
   }
-  delay(75);
+  delay(100);
 
 }
